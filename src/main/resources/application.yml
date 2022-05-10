@@ -1,0 +1,23 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: CotaFacil Java API
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://faucldade-comprafacil.mysql.database.azure.com:3306/comprafacil
+    username: comprafacil
+    password: Pratica123
+  jpa:
+    hibernate.ddl-auto: update
+    generate-ddl: false
+    show-sql: true
+    
+jwt:
+  secret: 4_ai@%)h5+3g1kqu#m8jdc5=$2ec3h$e^0mng%u301(+$52fq
+  expiration: 3600
+  
+release:
+  version: 0.0.1
+api:
+  version: 2022-05-04

@@ -1,0 +1,16 @@
+{
+    "configurations": [
+        
+        {
+            "type": "java",
+            "name": "Spring Boot-CotafacilApplication<cotafacil>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.project.cotafacil.CotafacilApplication",
+            "projectName": "cotafacil",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
