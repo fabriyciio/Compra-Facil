@@ -35,8 +35,8 @@ public class AuthenticationController {
 		
 		Response<TokenDTO> response = new Response<>();
 		
-		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		System.out.println("crip 123456 "+encoder.encode("123456"));
+		//BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		//System.out.println("crip 123456 "+encoder.encode("123456"));
 		
 		if (result.hasErrors()) {
 			result.getAllErrors().forEach(error -> response.addErrorMsgToResponse(error.getDefaultMessage()));
