@@ -2,7 +2,9 @@ package com.project.cotafacil.model.user;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -10,13 +12,18 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
 import org.modelmapper.ModelMapper;
 
 import com.project.cotafacil.enumeration.RoleEnum;
+import com.project.cotafacil.model.client.Client;
 import com.project.cotafacil.model.dto.user.UserDTO;
+import com.project.cotafacil.model.provider.Provider;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -35,7 +42,7 @@ public class User implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private int id;
 	
 	@Column(name = "nome")
 	private String name;
@@ -61,11 +68,21 @@ public class User implements Serializable {
 
 	@Column(name = "data_criacao")
 	private LocalDateTime creationDate;
+		
+	@ManyToOne
+    @JoinColumn(name="cliente_id", nullable=true)
+	private Client client;
+	
+	@ManyToOne
+    @JoinColumn(name="fornecedor_id", nullable=true)
+	private Provider provider;
 	
 	
 	@PrePersist
     public void prePersist() {
 		creationDate = LocalDateTime.now();
+		actived = true;
+		excluded = false;
     }
 	
 	public UserDTO convertEntityToDTO() {

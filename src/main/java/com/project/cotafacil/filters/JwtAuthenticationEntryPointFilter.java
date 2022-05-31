@@ -18,7 +18,7 @@ public class JwtAuthenticationEntryPointFilter implements AuthenticationEntryPoi
 			authException) throws IOException, ServletException {
 		
 		response.sendError(HttpServletResponse.SC_UNAUTHORIZED,
-				"Acesso Negado.Você deve estar autenticado no sistema para acessar o UR solicitado");
+				"Acesso Negado.Você deve estar autenticado no sistema para acessar o URL solicitado");
 	}
 
 }

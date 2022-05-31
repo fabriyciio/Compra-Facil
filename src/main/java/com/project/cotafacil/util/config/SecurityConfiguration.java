@@ -28,8 +28,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private JwtAuthenticationEntryPointFilter unauthorizedHandler;
 
-	@Autowired
-	private UserDetailsService userDetailsService;
 	
 	@Value("${spring.profiles.active}")
 	private String activeProfile;

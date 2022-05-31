@@ -1,40 +1,48 @@
 package com.project.cotafacil.model.dto.client;
 
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
 import org.modelmapper.ModelMapper;
 
-import com.project.cotafacil.model.client.*;
-import com.project.cotafacil.util.security.BcryptUtil;
+import com.project.cotafacil.model.client.Client;
+import com.project.cotafacil.model.dto.address.AddressDTO;
+import com.project.cotafacil.model.dto.user.UserDTO;
 
 import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class ClientDTO {
 	
-	@Getter
-	private Long id;
+	private int id;	
 	
-	@Getter
+	@NotNull(message = "O nome não pode ser nulo.")
+	@Length(min=14, max=14, message="Cnpj deve conter 14 caracteres.")
+	private String cnpj;
+	
 	@NotNull(message = "O nome não pode ser nulo.")
 	@Length(min=3, max=255, message="O nome deve conter entre 3 e 255 caracteres.")
 	private String name;
 
-	@Getter
-	@Length(max=255, message="O email deve conter no máximo 255 caracteres.")
-	@Email(message="Email inválido.")
-	private String mail;
+	@NotNull(message = "A razão social não pode ser nula.")
+	@Length(min=3, max=255, message="A razão social deve conter entre 3 e 255 caracteres.")
+	private String socialreason;
+	
+	private boolean actived;
+	
+	private boolean excluded;
+	
+	private AddressDTO address;
+	
+	private List<UserDTO> users;
 	
 	public Client convertDTOToEntity() {
 		return new ModelMapper().map(this, Client.class);

@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,6 +18,7 @@ import lombok.experimental.Accessors;
 @NoArgsConstructor
 public class ResponseError {
 	
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	@NotNull(message="Timestamp não pode ser nulo")
 	private LocalDateTime timestamp;
 	

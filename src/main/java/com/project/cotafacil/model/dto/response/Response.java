@@ -21,7 +21,7 @@ public class Response<T> {
     public void addErrorMsgToResponse(String msgError) {
         ResponseError error = new ResponseError()
         		.setDetails(msgError)
-                .setTimestamp(LocalDateTime.now());
+        		.setTimestamp(LocalDateTime.now());
         setErrors(error);
     }
 }
